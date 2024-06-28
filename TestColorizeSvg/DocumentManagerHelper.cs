@@ -3,7 +3,6 @@ using DevExpress.Utils;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
 using DevExpress.XtraTab;
-using System.Collections;
 
 namespace TestColorizeSvg
 {
@@ -25,6 +24,10 @@ namespace TestColorizeSvg
             }
             view.DocumentGroupProperties.HeaderOrientation = TabOrientation.Horizontal;
             view.DocumentProperties.TabWidth = 60;
+            foreach (var doc in view.Documents)
+            {
+                doc.ImageOptions.SvgImageSize = new Size(20, 20);
+            }
         }
 
         public static Document SetAlert(this Document doc, Color color = default)
