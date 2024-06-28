@@ -58,7 +58,7 @@ namespace TestColorizeSvg
             if (style is not null)
             {
                 style.SetValue("fill", colorstring);
-                return img.Clone();
+                return img;
             }
             return img;
         }
