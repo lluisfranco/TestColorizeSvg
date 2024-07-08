@@ -9,9 +9,14 @@ namespace TestColorizeSvg
     {
         string layoutfile = "layout.xml";
         string layoutfile2 = "layout2.xml";
+
+        MemoryStream stream = new MemoryStream();
+        MemoryStream stream2 = new MemoryStream();
+
         Document? GetDocument() => tabbedView.ActiveDocument as Document;
         public Form1()
         {
+
             InitializeComponent();
             toolbarFormControl.AddSwitchModeButtons();
             barButtonItemSetAlertt.ItemClick += (s, e) => GetDocument()?.SetAlert();
@@ -27,12 +32,26 @@ namespace TestColorizeSvg
                 if (File.Exists(layoutfile2)) dockManager.RestoreLayoutFromXml(layoutfile2);
                 tabbedView.InitializeView();
                 dockManager.InitializeView();
+                SaveDefaultLayouts();
             };
             FormClosed += (s, e) =>
             {
                 documentManager.View.SaveLayoutToXml(layoutfile);
                 dockManager.SaveLayoutToXml(layoutfile2);
             };
+            barButtonItemRestoreLayouts.ItemClick += (s, e) =>
+            {
+                documentManager.View.RestoreLayoutFromStream(stream);
+                dockManager.RestoreLayoutFromStream(stream2);
+            };
+        }
+
+        private void SaveDefaultLayouts()
+        {
+            documentManager.View.SaveLayoutToStream(stream);
+            stream.Seek(0, SeekOrigin.Begin);
+            dockManager.SaveLayoutToStream(stream2);
+            stream2.Seek(0, SeekOrigin.Begin);
         }
 
         private void SwitchTabHeaderLocation()

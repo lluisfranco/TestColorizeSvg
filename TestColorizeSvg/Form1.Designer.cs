@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(components);
             document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(components);
@@ -52,6 +52,7 @@
             barButtonItemSetAlertt = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemRemoveAlert = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemColorize = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemRestoreLayouts = new DevExpress.XtraBars.BarButtonItem();
             dockManager = new DevExpress.XtraBars.Docking.DockManager(components);
             dockPanel3 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
@@ -82,9 +83,9 @@
             document1.ControlName = "document1";
             document1.ControlType = typeof(XtraUserControl1);
             document1.ImageOptions.SvgImage = Properties.Resources.Home1;
-            toolTipItem1.Text = "General";
-            superToolTip1.Items.Add(toolTipItem1);
-            document1.SuperTip = superToolTip1;
+            toolTipItem4.Text = "General";
+            superToolTip4.Items.Add(toolTipItem4);
+            document1.SuperTip = superToolTip4;
             // 
             // document2
             // 
@@ -92,9 +93,9 @@
             document2.ControlName = "document2";
             document2.ControlType = typeof(XtraUserControl2);
             document2.ImageOptions.SvgImage = Properties.Resources.Phone;
-            toolTipItem2.Text = "Contact";
-            superToolTip2.Items.Add(toolTipItem2);
-            document2.SuperTip = superToolTip2;
+            toolTipItem5.Text = "Contact";
+            superToolTip5.Items.Add(toolTipItem5);
+            document2.SuperTip = superToolTip5;
             // 
             // document3
             // 
@@ -102,9 +103,9 @@
             document3.ControlName = "document3";
             document3.ControlType = typeof(XtraUserControl3);
             document3.ImageOptions.SvgImage = Properties.Resources.Calendar;
-            toolTipItem3.Text = "Events";
-            superToolTip3.Items.Add(toolTipItem3);
-            document3.SuperTip = superToolTip3;
+            toolTipItem6.Text = "Events";
+            superToolTip6.Items.Add(toolTipItem6);
+            document3.SuperTip = superToolTip6;
             // 
             // documentManager
             // 
@@ -116,8 +117,8 @@
             // 
             tabbedView.DocumentGroups.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup[] { documentGroup1 });
             tabbedView.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] { document1, document2, document3 });
-            dockingContainer1.Element = documentGroup1;
-            tabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] { dockingContainer1 });
+            dockingContainer2.Element = documentGroup1;
+            tabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] { dockingContainer2 });
             // 
             // toolbarFormControl
             // 
@@ -130,6 +131,7 @@
             toolbarFormControl.TitleItemLinks.Add(barButtonItemSetAlertt);
             toolbarFormControl.TitleItemLinks.Add(barButtonItemRemoveAlert);
             toolbarFormControl.TitleItemLinks.Add(barButtonItemColorize);
+            toolbarFormControl.TitleItemLinks.Add(barButtonItemRestoreLayouts);
             toolbarFormControl.ToolbarForm = this;
             // 
             // toolbarFormManager
@@ -139,8 +141,8 @@
             toolbarFormManager.DockControls.Add(barDockControlLeft);
             toolbarFormManager.DockControls.Add(barDockControlRight);
             toolbarFormManager.Form = this;
-            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemSetAlertt, barButtonItemRemoveAlert, barButtonItemColorize });
-            toolbarFormManager.MaxItemId = 3;
+            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemSetAlertt, barButtonItemRemoveAlert, barButtonItemColorize, barButtonItemRestoreLayouts });
+            toolbarFormManager.MaxItemId = 4;
             // 
             // barDockControlTop
             // 
@@ -197,6 +199,14 @@
             barButtonItemColorize.ImageOptions.SvgImage = Properties.Resources.Color;
             barButtonItemColorize.Name = "barButtonItemColorize";
             barButtonItemColorize.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItemRestoreLayouts
+            // 
+            barButtonItemRestoreLayouts.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            barButtonItemRestoreLayouts.Caption = "Restore Layouts";
+            barButtonItemRestoreLayouts.Id = 3;
+            barButtonItemRestoreLayouts.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            barButtonItemRestoreLayouts.Name = "barButtonItemRestoreLayouts";
             // 
             // dockManager
             // 
@@ -310,5 +320,6 @@
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.Docking.DockManager dockManager;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemRestoreLayouts;
     }
 }
