@@ -2,7 +2,6 @@
 using DevExpress.Utils;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
-using DevExpress.XtraRichEdit.Tables.Native;
 using DevExpress.XtraTab;
 
 namespace TestColorizeSvg
@@ -11,6 +10,7 @@ namespace TestColorizeSvg
     {
         public static void InitializeView(this TabbedView view, string? loadingText = null, int tableWidth = 60)
         {
+            const int SIZE = 20;
             view.DocumentGroupProperties.HeaderLocation = TabHeaderLocation.Left;
             view.DocumentGroupProperties.HeaderOrientation = TabOrientation.Horizontal;
             view.DocumentProperties.AllowClose = false;
@@ -23,13 +23,10 @@ namespace TestColorizeSvg
             {
                 doc.Header = (doc as Document)?.SuperTip.Items.OfType<ToolTipItem>().FirstOrDefault()?.Text;
                 doc.Caption = null;
+                doc.ImageOptions.SvgImageSize = new Size(SIZE, SIZE);
             }
             view.DocumentGroupProperties.HeaderOrientation = TabOrientation.Horizontal;
             view.DocumentProperties.TabWidth = tableWidth;
-            foreach (var doc in view.Documents)
-            {
-                doc.ImageOptions.SvgImageSize = new Size(20, 20);
-            }
         }
 
         public static Document SetAlert(this Document doc, Color backColor = default, Color imageColor = default)
