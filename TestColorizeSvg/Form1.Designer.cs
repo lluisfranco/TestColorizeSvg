@@ -29,7 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(components);
             document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(components);
             document2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(components);
@@ -65,6 +71,9 @@
             document1.ControlName = "document1";
             document1.ControlType = typeof(XtraUserControl1);
             document1.ImageOptions.SvgImage = Properties.Resources.Home1;
+            toolTipItem1.Text = "General";
+            superToolTip1.Items.Add(toolTipItem1);
+            document1.SuperTip = superToolTip1;
             // 
             // document2
             // 
@@ -72,6 +81,9 @@
             document2.ControlName = "document2";
             document2.ControlType = typeof(XtraUserControl2);
             document2.ImageOptions.SvgImage = Properties.Resources.Phone;
+            toolTipItem2.Text = "Contact";
+            superToolTip2.Items.Add(toolTipItem2);
+            document2.SuperTip = superToolTip2;
             // 
             // document3
             // 
@@ -79,6 +91,9 @@
             document3.ControlName = "document3";
             document3.ControlType = typeof(XtraUserControl3);
             document3.ImageOptions.SvgImage = Properties.Resources.Calendar;
+            toolTipItem3.Text = "Events";
+            superToolTip3.Items.Add(toolTipItem3);
+            document3.SuperTip = superToolTip3;
             // 
             // documentManager
             // 
@@ -90,8 +105,8 @@
             // 
             tabbedView.DocumentGroups.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup[] { documentGroup1 });
             tabbedView.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] { document1, document2, document3 });
-            dockingContainer2.Element = documentGroup1;
-            tabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] { dockingContainer2 });
+            dockingContainer1.Element = documentGroup1;
+            tabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] { dockingContainer1 });
             // 
             // toolbarFormControl
             // 

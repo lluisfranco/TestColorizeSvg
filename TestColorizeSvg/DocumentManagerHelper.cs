@@ -2,13 +2,14 @@
 using DevExpress.Utils;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
+using DevExpress.XtraRichEdit.Tables.Native;
 using DevExpress.XtraTab;
 
 namespace TestColorizeSvg
 {
     public static class DocumentManagerHelper
     {
-        public static void InitializeView(this TabbedView view, string? loadingText = null)
+        public static void InitializeView(this TabbedView view, string? loadingText = null, int tableWidth = 60)
         {
             view.DocumentGroupProperties.HeaderLocation = TabHeaderLocation.Left;
             view.DocumentGroupProperties.HeaderOrientation = TabOrientation.Horizontal;
@@ -20,22 +21,26 @@ namespace TestColorizeSvg
                 view.UseLoadingIndicator = DefaultBoolean.False;
             foreach (var doc in view.Documents)
             {
+                doc.Header = (doc as Document)?.SuperTip.Items.OfType<ToolTipItem>().FirstOrDefault()?.Text;
                 doc.Caption = null;
             }
             view.DocumentGroupProperties.HeaderOrientation = TabOrientation.Horizontal;
-            view.DocumentProperties.TabWidth = 60;
+            view.DocumentProperties.TabWidth = tableWidth;
             foreach (var doc in view.Documents)
             {
                 doc.ImageOptions.SvgImageSize = new Size(20, 20);
             }
         }
 
-        public static Document SetAlert(this Document doc, Color color = default)
+        public static Document SetAlert(this Document doc, Color backColor = default, Color imageColor = default)
         {
-            if (color == default) color = DXSkinColors.FillColors.Danger;
-            doc.Appearance.Header.BackColor = color;
-            doc.Appearance.HeaderHotTracked.BackColor = HighLight(color);
-            doc.Appearance.HeaderSelected.BackColor = HighLight(color, -25);
+            const int SELECTED_COLOR_FACTOR = -25;
+            if (backColor == default) backColor = DXSkinColors.FillColors.Danger;
+            if (imageColor == default) imageColor = Color.White;
+            doc.Appearance.Header.BackColor = backColor;
+            doc.Appearance.HeaderHotTracked.BackColor = HighLight(backColor);
+            doc.Appearance.HeaderSelected.BackColor = HighLight(backColor, SELECTED_COLOR_FACTOR);
+            if (imageColor != default) doc.SetImageColor(imageColor);
             return doc;
         }
 
@@ -44,22 +49,34 @@ namespace TestColorizeSvg
             doc.Appearance.Header.BackColor = Color.Transparent;
             doc.Appearance.HeaderHotTracked.BackColor = Color.Transparent;
             doc.Appearance.HeaderSelected.BackColor = Color.Transparent;
+            doc.RemoveImageColor();
             return doc;
         }
 
-        public static Document SetImageColor(this Document doc, Color color = default)
+        public static Document SetImageColor(this Document doc, Color imageColor = default)
         {
-            if (color == default) color = Color.White;
+            if (imageColor == default) imageColor = Color.White;
+            doc.ImageOptions.SvgImage = doc.ImageOptions.SvgImage.SetImageFillColor(imageColor);
+            doc.ImageOptions.SvgImageColorizationMode = SvgImageColorizationMode.None;
+            return doc;
+        }
+
+        public static Document RemoveImageColor(this Document doc)
+        {
+            if (doc.ImageOptions.SvgImage.Tag is null) return doc;
+            var color = ColorTranslator.FromHtml(doc.ImageOptions.SvgImage.Tag.ToString() ?? string.Empty);
             doc.ImageOptions.SvgImage = doc.ImageOptions.SvgImage.SetImageFillColor(color);
+            doc.ImageOptions.SvgImageColorizationMode = SvgImageColorizationMode.Default;
             return doc;
         }
 
         public static SvgImage SetImageFillColor(this SvgImage img, Color color)
         {
-            var colorstring = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+            var colorstring = $"#{color.R:X2}{color.G:X2}{color.B:X2}";            
             var style = img.Styles.FirstOrDefault();
             if (style is not null)
             {
+                if (img.Tag is null) img.Tag = style.Attributes["fill"];
                 style.SetValue("fill", colorstring);
                 return img;
             }
