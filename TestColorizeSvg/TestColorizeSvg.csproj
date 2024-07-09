@@ -19,6 +19,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="XtraUserControl4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="XtraUserControl3.cs">
       <SubType>UserControl</SubType>
     </Compile>

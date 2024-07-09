@@ -61,12 +61,12 @@
             imageListBoxControl1 = new DevExpress.XtraEditors.ImageListBoxControl();
             dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             dockPanel4 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel4_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             checkButton1 = new DevExpress.XtraEditors.CheckButton();
             dockPanel5 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel3 = new DevExpress.XtraBars.Docking.DockPanel();
+            xtraUserControl41 = new XtraUserControl4();
             ((System.ComponentModel.ISupportInitialize)documentGroup1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)document1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)document2).BeginInit();
@@ -291,19 +291,11 @@
             // 
             // dockPanel2_Container
             // 
-            dockPanel2_Container.Controls.Add(simpleButton1);
+            dockPanel2_Container.Controls.Add(xtraUserControl41);
             dockPanel2_Container.Location = new Point(4, 40);
             dockPanel2_Container.Name = "dockPanel2_Container";
             dockPanel2_Container.Size = new Size(193, 267);
             dockPanel2_Container.TabIndex = 0;
-            // 
-            // simpleButton1
-            // 
-            simpleButton1.Location = new Point(34, 31);
-            simpleButton1.Name = "simpleButton1";
-            simpleButton1.Size = new Size(75, 23);
-            simpleButton1.TabIndex = 0;
-            simpleButton1.Text = "simpleButton1";
             // 
             // dockPanel4
             // 
@@ -353,6 +345,18 @@
             dockPanel3.Size = new Size(200, 620);
             dockPanel3.Tabbed = true;
             dockPanel3.Text = "panelContainer1";
+            // 
+            // xtraUserControl41
+            // 
+            xtraUserControl41.Appearance.BackColor = Color.FromArgb(255, 192, 255);
+            xtraUserControl41.Appearance.Options.UseBackColor = true;
+            xtraUserControl41.Dock = DockStyle.Fill;
+            xtraUserControl41.Initialized = false;
+            xtraUserControl41.Location = new Point(0, 0);
+            xtraUserControl41.Name = "xtraUserControl41";
+            xtraUserControl41.Padding = new Padding(10);
+            xtraUserControl41.Size = new Size(193, 267);
+            xtraUserControl41.TabIndex = 0;
             // 
             // Form1
             // 
@@ -418,9 +422,9 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel4_Container;
         private DevExpress.XtraEditors.CheckButton checkButton1;
         private DevExpress.XtraEditors.ImageListBoxControl imageListBoxControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel5;
         private DevExpress.XtraBars.BarButtonItem barButtonItemRefresh;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel6;
+        private XtraUserControl4 xtraUserControl41;
     }
 }
