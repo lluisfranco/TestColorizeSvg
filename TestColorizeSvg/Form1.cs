@@ -28,14 +28,13 @@ namespace TestColorizeSvg
             Load += (s, e) =>
             {
                 SaveDefaultLayouts();
-                SuspendLayout();
+                ControlHelper.SuspendLayout(this, dockPanel1, dockPanel2, dockPanel4);
                 toolbarFormControl.TitleItemLinks.SyncDockPanesToBar(dockManager);
-                //toolbarFormControl.TitleItemLinks.SyncDockPanesToBar(dockPanel1, dockPanel2);
                 if (File.Exists(layoutfile)) documentManager.View.RestoreLayoutFromXml(layoutfile);
                 if (File.Exists(layoutfile2)) dockManager.RestoreLayoutFromXml(layoutfile2);
                 tabbedView.InitializeView();
                 dockManager.InitializeView();
-                ResumeLayout(false);
+                ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
             };
             FormClosed += (s, e) =>
             {
@@ -44,10 +43,12 @@ namespace TestColorizeSvg
             };
             barButtonItemRestoreLayouts.ItemClick += (s, e) =>
             {
+                ControlHelper.SuspendLayout(this, dockPanel1, dockPanel2, dockPanel4);
                 SetControlBytesLayout(documentManager.View, DefaultLayoutBytes);
                 SetControlBytesLayout(dockManager, DefaultLayoutBytes2);
                 tabbedView.InitializeView();
                 dockManager.InitializeView();
+                ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
             };
         }
 
