@@ -24,12 +24,10 @@ namespace TestColorizeSvg
         {
             this.ShowProgressPanel();
             await Task.Delay(2000);
-            Initialized = true; 
+            Initialized = true;
             var parent = FindForm();
             if (parent is not null) parent.Text = $"Updated at {DateTime.Now}";
             this.CloseProgressPanel();
         }
-
-        public void SetImage(SvgImage img) => pictureEdit.SvgImage = img;
     }
 }

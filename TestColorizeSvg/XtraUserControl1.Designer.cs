@@ -28,20 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureEdit = new DevExpress.XtraEditors.PictureEdit();
-            ((System.ComponentModel.ISupportInitialize)pictureEdit.Properties).BeginInit();
+            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             SuspendLayout();
             // 
-            // pictureEdit
+            // simpleButton1
             // 
-            pictureEdit.Dock = DockStyle.Fill;
-            pictureEdit.Location = new Point(0, 0);
-            pictureEdit.Name = "pictureEdit";
-            pictureEdit.Properties.Appearance.BackColor = Color.Transparent;
-            pictureEdit.Properties.Appearance.Options.UseBackColor = true;
-            pictureEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            pictureEdit.Size = new Size(150, 150);
-            pictureEdit.TabIndex = 0;
+            simpleButton1.Dock = DockStyle.Fill;
+            simpleButton1.Location = new Point(10, 10);
+            simpleButton1.Name = "simpleButton1";
+            simpleButton1.Size = new Size(130, 130);
+            simpleButton1.TabIndex = 0;
+            simpleButton1.Text = "simpleButton1";
             // 
             // XtraUserControl1
             // 
@@ -49,14 +46,14 @@
             Appearance.Options.UseBackColor = true;
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pictureEdit);
+            Controls.Add(simpleButton1);
             Name = "XtraUserControl1";
-            ((System.ComponentModel.ISupportInitialize)pictureEdit.Properties).EndInit();
+            Padding = new Padding(10);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.PictureEdit pictureEdit;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

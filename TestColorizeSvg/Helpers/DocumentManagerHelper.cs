@@ -2,9 +2,7 @@
 using DevExpress.Utils;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
-using DevExpress.XtraRichEdit.Model;
 using DevExpress.XtraTab;
-using static DevExpress.Office.Drawing.LazyGroupBrush;
 
 namespace TestColorizeSvg
 {
@@ -41,15 +39,16 @@ namespace TestColorizeSvg
             };
         }
 
-        public static IDetailsModule? GetActiveModule(this TabbedView view)
+        public static async Task RefreshActiveModules(this TabbedView view)
         {
-            return view.ActiveDocument?.Control as IDetailsModule;
-        }
-
-        public static async Task RefreshActiveModule(this TabbedView view)
-        {
-            var module = view.GetActiveModule();
-            if (module is not null) await module.RefreshData();
+            await Task.Delay(150);
+            var tasks = new List<Task>();
+            foreach (var item in view.Documents)
+            {
+                var module = item.Control as IDetailsModule;
+                if (module is not null) tasks.Add(module.RefreshData());
+            }
+            await Task.WhenAll(tasks);
         }
 
         public static Document SetAlert(this Document doc, Color backColor = default, Color imageColor = default)

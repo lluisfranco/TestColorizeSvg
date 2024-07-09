@@ -20,7 +20,7 @@ namespace TestColorizeSvg
             barButtonItemSetAlertt.ItemClick += (s, e) => GetDocument()?.SetAlert();
             barButtonItemRemoveAlert.ItemClick += (s, e) => GetDocument()?.RemoveAlert();
             barButtonItemColorize.ItemClick += (s, e) => SwitchTabHeaderLocation();
-            barButtonItemRefresh.ItemClick += async (s, e) => await tabbedView.RefreshActiveModule();
+            barButtonItemRefresh.ItemClick += async (s, e) => await tabbedView.RefreshActiveModules();
             barButtonItemRestoreLayouts.ItemClick += (s, e) => RestoreDefaultLayoutsFromMemory();
             Load += async (s, e) =>
             {
@@ -29,12 +29,12 @@ namespace TestColorizeSvg
                 toolbarFormControl.TitleItemLinks.SyncDockPanesToBar(dockManager);
                 if (File.Exists(layoutfile)) documentManager.View.RestoreLayoutFromXml(layoutfile);
                 if (File.Exists(layoutfile2)) dockManager.RestoreLayoutFromXml(layoutfile2);
-                tabbedView.InitializeView("Loading details...");
+                tabbedView.InitializeView();
                 dockManager.InitializeView();
                 ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
-                dockPanel1.ShowProgressPanel();
-                await tabbedView.RefreshActiveModule();
-                dockPanel1.CloseProgressPanel();
+                //dockPanel1.ShowProgressPanel();
+                await tabbedView.RefreshActiveModules();
+                //dockPanel1.CloseProgressPanel();
             };
             FormClosed += (s, e) =>
             {
@@ -48,7 +48,7 @@ namespace TestColorizeSvg
             ControlHelper.SuspendLayout(this, dockPanel1, dockPanel2, dockPanel4);
             documentManager.View.SetControlBytesLayout(DefaultLayoutBytes);
             dockManager.SetControlBytesLayout(DefaultLayoutBytes2);
-            tabbedView.InitializeView("Loading details...");
+            tabbedView.InitializeView();
             dockManager.InitializeView();
             ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
         }

@@ -28,7 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            ((System.ComponentModel.ISupportInitialize)memoEdit1.Properties).BeginInit();
             SuspendLayout();
+            // 
+            // memoEdit1
+            // 
+            memoEdit1.Dock = DockStyle.Fill;
+            memoEdit1.Location = new Point(10, 10);
+            memoEdit1.Name = "memoEdit1";
+            memoEdit1.Size = new Size(130, 130);
+            memoEdit1.TabIndex = 0;
             // 
             // XtraUserControl2
             // 
@@ -36,10 +46,15 @@
             Appearance.Options.UseBackColor = true;
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(memoEdit1);
             Name = "XtraUserControl2";
+            Padding = new Padding(10);
+            ((System.ComponentModel.ISupportInitialize)memoEdit1.Properties).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
     }
 }
