@@ -32,7 +32,9 @@ namespace TestColorizeSvg
                 tabbedView.InitializeView("Loading details...");
                 dockManager.InitializeView();
                 ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
+                dockPanel1.ShowProgressPanel();
                 await tabbedView.RefreshActiveModule();
+                dockPanel1.CloseProgressPanel();
             };
             FormClosed += (s, e) =>
             {

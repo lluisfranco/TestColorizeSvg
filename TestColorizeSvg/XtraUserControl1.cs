@@ -22,10 +22,12 @@ namespace TestColorizeSvg
 
         public async Task RefreshData()
         {
+            this.ShowProgressPanel();
             await Task.Delay(2000);
             Initialized = true; 
             var parent = FindForm();
             if (parent is not null) parent.Text = $"Updated at {DateTime.Now}";
+            this.CloseProgressPanel();
         }
 
         public void SetImage(SvgImage img) => pictureEdit.SvgImage = img;
