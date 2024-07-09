@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(components);
             document1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(components);
@@ -59,6 +59,12 @@
             dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            dockPanel4 = new DevExpress.XtraBars.Docking.DockPanel();
+            dockPanel4_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            checkButton1 = new DevExpress.XtraEditors.CheckButton();
+            imageListBoxControl1 = new DevExpress.XtraEditors.ImageListBoxControl();
+            dockPanel5 = new DevExpress.XtraBars.Docking.DockPanel();
             ((System.ComponentModel.ISupportInitialize)documentGroup1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)document1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)document2).BeginInit();
@@ -68,9 +74,14 @@
             ((System.ComponentModel.ISupportInitialize)toolbarFormControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)toolbarFormManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dockManager).BeginInit();
-            dockPanel3.SuspendLayout();
             dockPanel2.SuspendLayout();
+            dockPanel2_Container.SuspendLayout();
             dockPanel1.SuspendLayout();
+            dockPanel1_Container.SuspendLayout();
+            dockPanel4.SuspendLayout();
+            dockPanel4_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imageListBoxControl1).BeginInit();
+            dockPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // documentGroup1
@@ -83,9 +94,9 @@
             document1.ControlName = "document1";
             document1.ControlType = typeof(XtraUserControl1);
             document1.ImageOptions.SvgImage = Properties.Resources.Home1;
-            toolTipItem4.Text = "General";
-            superToolTip4.Items.Add(toolTipItem4);
-            document1.SuperTip = superToolTip4;
+            toolTipItem1.Text = "General";
+            superToolTip1.Items.Add(toolTipItem1);
+            document1.SuperTip = superToolTip1;
             // 
             // document2
             // 
@@ -93,9 +104,9 @@
             document2.ControlName = "document2";
             document2.ControlType = typeof(XtraUserControl2);
             document2.ImageOptions.SvgImage = Properties.Resources.Phone;
-            toolTipItem5.Text = "Contact";
-            superToolTip5.Items.Add(toolTipItem5);
-            document2.SuperTip = superToolTip5;
+            toolTipItem2.Text = "Contact";
+            superToolTip2.Items.Add(toolTipItem2);
+            document2.SuperTip = superToolTip2;
             // 
             // document3
             // 
@@ -103,9 +114,9 @@
             document3.ControlName = "document3";
             document3.ControlType = typeof(XtraUserControl3);
             document3.ImageOptions.SvgImage = Properties.Resources.Calendar;
-            toolTipItem6.Text = "Events";
-            superToolTip6.Items.Add(toolTipItem6);
-            document3.SuperTip = superToolTip6;
+            toolTipItem3.Text = "Events";
+            superToolTip3.Items.Add(toolTipItem3);
+            document3.SuperTip = superToolTip3;
             // 
             // documentManager
             // 
@@ -117,8 +128,8 @@
             // 
             tabbedView.DocumentGroups.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup[] { documentGroup1 });
             tabbedView.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] { document1, document2, document3 });
-            dockingContainer2.Element = documentGroup1;
-            tabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] { dockingContainer2 });
+            dockingContainer1.Element = documentGroup1;
+            tabbedView.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] { dockingContainer1 });
             // 
             // toolbarFormControl
             // 
@@ -205,21 +216,18 @@
             barButtonItemRestoreLayouts.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             barButtonItemRestoreLayouts.Caption = "Restore Layouts";
             barButtonItemRestoreLayouts.Id = 3;
-            barButtonItemRestoreLayouts.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            barButtonItemRestoreLayouts.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemRestoreLayouts.ImageOptions.SvgImage");
             barButtonItemRestoreLayouts.Name = "barButtonItemRestoreLayouts";
             // 
             // dockManager
             // 
             dockManager.DockingOptions.ShowCaptionImage = true;
             dockManager.Form = this;
-            dockManager.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] { dockPanel3 });
+            dockManager.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] { dockPanel5, dockPanel4 });
             dockManager.TopZIndexControls.AddRange(new string[] { "DevExpress.XtraBars.BarDockControl", "DevExpress.XtraBars.StandaloneBarDockControl", "System.Windows.Forms.MenuStrip", "System.Windows.Forms.StatusStrip", "System.Windows.Forms.StatusBar", "DevExpress.XtraBars.Ribbon.RibbonStatusBar", "DevExpress.XtraBars.Ribbon.RibbonControl", "DevExpress.XtraBars.Navigation.OfficeNavigationBar", "DevExpress.XtraBars.Navigation.TileNavPane", "DevExpress.XtraBars.TabFormControl", "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl", "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl" });
             // 
             // dockPanel3
             // 
-            dockPanel3.ActiveChild = dockPanel2;
-            dockPanel3.Controls.Add(dockPanel2);
-            dockPanel3.Controls.Add(dockPanel1);
             dockPanel3.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             dockPanel3.ID = new Guid("845921fa-f311-4d23-8f5b-e52ee114ac3a");
             dockPanel3.Location = new Point(811, 31);
@@ -235,44 +243,103 @@
             dockPanel2.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             dockPanel2.ID = new Guid("216036b2-bbd3-4fa9-b5e8-b69766138dd2");
             dockPanel2.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("dockPanel2.ImageOptions.SvgImage");
-            dockPanel2.Location = new Point(4, 40);
+            dockPanel2.Location = new Point(0, 0);
             dockPanel2.Name = "dockPanel2";
-            dockPanel2.OriginalSize = new Size(193, 565);
-            dockPanel2.Size = new Size(193, 534);
+            dockPanel2.OriginalSize = new Size(200, 204);
+            dockPanel2.Size = new Size(200, 310);
             dockPanel2.Text = "Marks";
             // 
             // dockPanel2_Container
             // 
-            dockPanel2_Container.Location = new Point(0, 0);
+            dockPanel2_Container.Controls.Add(simpleButton1);
+            dockPanel2_Container.Location = new Point(4, 40);
             dockPanel2_Container.Name = "dockPanel2_Container";
-            dockPanel2_Container.Size = new Size(193, 534);
+            dockPanel2_Container.Size = new Size(193, 266);
             dockPanel2_Container.TabIndex = 0;
             // 
             // dockPanel1
             // 
             dockPanel1.Controls.Add(dockPanel1_Container);
             dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            dockPanel1.FloatVertical = true;
             dockPanel1.ID = new Guid("6e9859d4-e037-4e96-98ba-0116d3a995f0");
             dockPanel1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("dockPanel1.ImageOptions.SvgImage");
-            dockPanel1.Location = new Point(4, 40);
+            dockPanel1.Location = new Point(0, 310);
             dockPanel1.Name = "dockPanel1";
-            dockPanel1.OriginalSize = new Size(193, 565);
-            dockPanel1.Size = new Size(193, 534);
+            dockPanel1.OriginalSize = new Size(200, 204);
+            dockPanel1.Size = new Size(200, 310);
             dockPanel1.Text = "Roles";
             // 
             // dockPanel1_Container
             // 
-            dockPanel1_Container.Location = new Point(0, 0);
+            dockPanel1_Container.Controls.Add(imageListBoxControl1);
+            dockPanel1_Container.Location = new Point(4, 40);
             dockPanel1_Container.Name = "dockPanel1_Container";
-            dockPanel1_Container.Size = new Size(193, 534);
+            dockPanel1_Container.Size = new Size(193, 267);
             dockPanel1_Container.TabIndex = 0;
+            // 
+            // dockPanel4
+            // 
+            dockPanel4.Controls.Add(dockPanel4_Container);
+            dockPanel4.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            dockPanel4.ID = new Guid("9d10561b-3c48-461a-96a0-c365457f10f3");
+            dockPanel4.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("dockPanel4.ImageOptions.SvgImage");
+            dockPanel4.Location = new Point(0, 451);
+            dockPanel4.Name = "dockPanel4";
+            dockPanel4.OriginalSize = new Size(200, 200);
+            dockPanel4.Size = new Size(811, 200);
+            dockPanel4.Text = "Errors";
+            // 
+            // dockPanel4_Container
+            // 
+            dockPanel4_Container.Controls.Add(checkButton1);
+            dockPanel4_Container.Location = new Point(3, 41);
+            dockPanel4_Container.Name = "dockPanel4_Container";
+            dockPanel4_Container.Size = new Size(805, 156);
+            dockPanel4_Container.TabIndex = 0;
+            // 
+            // simpleButton1
+            // 
+            simpleButton1.Location = new Point(34, 31);
+            simpleButton1.Name = "simpleButton1";
+            simpleButton1.Size = new Size(75, 23);
+            simpleButton1.TabIndex = 0;
+            simpleButton1.Text = "simpleButton1";
+            // 
+            // checkButton1
+            // 
+            checkButton1.Location = new Point(146, 53);
+            checkButton1.Name = "checkButton1";
+            checkButton1.Size = new Size(75, 23);
+            checkButton1.TabIndex = 0;
+            checkButton1.Text = "checkButton1";
+            // 
+            // imageListBoxControl1
+            // 
+            imageListBoxControl1.Location = new Point(24, 70);
+            imageListBoxControl1.Name = "imageListBoxControl1";
+            imageListBoxControl1.Size = new Size(110, 105);
+            imageListBoxControl1.TabIndex = 1;
+            // 
+            // dockPanel5
+            // 
+            dockPanel5.Controls.Add(dockPanel2);
+            dockPanel5.Controls.Add(dockPanel1);
+            dockPanel5.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            dockPanel5.ID = new Guid("6fe82bd0-41a2-4167-ba7f-c1b6c6b25c47");
+            dockPanel5.Location = new Point(811, 31);
+            dockPanel5.Name = "dockPanel5";
+            dockPanel5.OriginalSize = new Size(200, 200);
+            dockPanel5.Size = new Size(200, 620);
+            dockPanel5.Text = "panelContainer1";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1011, 651);
-            Controls.Add(dockPanel3);
+            Controls.Add(dockPanel4);
+            Controls.Add(dockPanel5);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
             Controls.Add(barDockControlBottom);
@@ -290,9 +357,14 @@
             ((System.ComponentModel.ISupportInitialize)toolbarFormControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)toolbarFormManager).EndInit();
             ((System.ComponentModel.ISupportInitialize)dockManager).EndInit();
-            dockPanel3.ResumeLayout(false);
             dockPanel2.ResumeLayout(false);
+            dockPanel2_Container.ResumeLayout(false);
             dockPanel1.ResumeLayout(false);
+            dockPanel1_Container.ResumeLayout(false);
+            dockPanel4.ResumeLayout(false);
+            dockPanel4_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imageListBoxControl1).EndInit();
+            dockPanel5.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -321,5 +393,11 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.Docking.DockManager dockManager;
         private DevExpress.XtraBars.BarButtonItem barButtonItemRestoreLayouts;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel4;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel4_Container;
+        private DevExpress.XtraEditors.CheckButton checkButton1;
+        private DevExpress.XtraEditors.ImageListBoxControl imageListBoxControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel5;
     }
 }

@@ -28,11 +28,14 @@ namespace TestColorizeSvg
             Load += (s, e) =>
             {
                 SaveDefaultLayouts();
-                toolbarFormControl.TitleItemLinks.SyncDockPanesToBar(dockPanel1, dockPanel2);
+                SuspendLayout();
+                toolbarFormControl.TitleItemLinks.SyncDockPanesToBar(dockManager);
+                //toolbarFormControl.TitleItemLinks.SyncDockPanesToBar(dockPanel1, dockPanel2);
                 if (File.Exists(layoutfile)) documentManager.View.RestoreLayoutFromXml(layoutfile);
                 if (File.Exists(layoutfile2)) dockManager.RestoreLayoutFromXml(layoutfile2);
                 tabbedView.InitializeView();
                 dockManager.InitializeView();
+                ResumeLayout(false);
             };
             FormClosed += (s, e) =>
             {

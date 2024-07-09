@@ -7,6 +7,12 @@ namespace TestColorizeSvg
 {
     public static class BarHelper
     {
+        public static void SyncDockPanesToBar(this BarItemLinkCollection barLinks, DockManager dock)
+        {
+            var panels = dock.Panels.Where(p => p.Count == 0).ToArray();
+            barLinks.SyncDockPanesToBar(panels);
+        }
+
         public static void SyncDockPanesToBar(this BarItemLinkCollection barLinks, params DockPanel[] panes)
         {            
             int i = 0;
