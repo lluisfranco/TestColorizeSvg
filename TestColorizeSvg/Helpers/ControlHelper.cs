@@ -21,5 +21,4 @@
             control.PerformLayout();
         }
     }
-
 }

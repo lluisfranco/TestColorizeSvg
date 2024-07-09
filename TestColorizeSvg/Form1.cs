@@ -1,8 +1,7 @@
-using DevExpress.XtraBars.ToolbarForm;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
-using System.IO;
+using DevExpress.XtraBars.ToolbarForm;
 using DevExpress.XtraTab;
-using DevExpress.Utils.Serializing;
+using System.IO;
 
 namespace TestColorizeSvg
 {
@@ -16,48 +15,48 @@ namespace TestColorizeSvg
         Document? GetDocument() => tabbedView.ActiveDocument as Document;
         public Form1()
         {
-
             InitializeComponent();
             toolbarFormControl.AddSwitchModeButtons();
             barButtonItemSetAlertt.ItemClick += (s, e) => GetDocument()?.SetAlert();
             barButtonItemRemoveAlert.ItemClick += (s, e) => GetDocument()?.RemoveAlert();
-            barButtonItemColorize.ItemClick += (s, e) =>
+            barButtonItemColorize.ItemClick += (s, e) => SwitchTabHeaderLocation();
+            barButtonItemRefresh.ItemClick += async (s, e) => await tabbedView.RefreshActiveModule();
+            barButtonItemRestoreLayouts.ItemClick += (s, e) => RestoreDefaultLayoutsFromMemory();
+            Load += async (s, e) =>
             {
-                SwitchTabHeaderLocation();
-            };
-            Load += (s, e) =>
-            {
-                SaveDefaultLayouts();
+                SaveDefaultLayoutsToMemory();
                 ControlHelper.SuspendLayout(this, dockPanel1, dockPanel2, dockPanel4);
                 toolbarFormControl.TitleItemLinks.SyncDockPanesToBar(dockManager);
                 if (File.Exists(layoutfile)) documentManager.View.RestoreLayoutFromXml(layoutfile);
                 if (File.Exists(layoutfile2)) dockManager.RestoreLayoutFromXml(layoutfile2);
-                tabbedView.InitializeView();
+                tabbedView.InitializeView("Loading details...");
                 dockManager.InitializeView();
                 ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
+                await tabbedView.RefreshActiveModule();
             };
             FormClosed += (s, e) =>
             {
                 documentManager.View.SaveLayoutToXml(layoutfile);
                 dockManager.SaveLayoutToXml(layoutfile2);
             };
-            barButtonItemRestoreLayouts.ItemClick += (s, e) =>
-            {
-                ControlHelper.SuspendLayout(this, dockPanel1, dockPanel2, dockPanel4);
-                SetControlBytesLayout(documentManager.View, DefaultLayoutBytes);
-                SetControlBytesLayout(dockManager, DefaultLayoutBytes2);
-                tabbedView.InitializeView();
-                dockManager.InitializeView();
-                ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
-            };
         }
 
-        private void SaveDefaultLayouts()
+        private void RestoreDefaultLayoutsFromMemory()
         {
-            DefaultLayoutBytes = GetCurrentLayoutStream(documentManager.View).ToArray();
-            DefaultLayoutBytes2 = GetCurrentLayoutStream(dockManager).ToArray();
+            ControlHelper.SuspendLayout(this, dockPanel1, dockPanel2, dockPanel4);
+            documentManager.View.SetControlBytesLayout(DefaultLayoutBytes);
+            dockManager.SetControlBytesLayout(DefaultLayoutBytes2);
+            tabbedView.InitializeView("Loading details...");
+            dockManager.InitializeView();
+            ControlHelper.ResumeLayout(this, dockPanel1, dockPanel2, dockPanel4);
         }
 
+        private void SaveDefaultLayoutsToMemory()
+        {
+            DefaultLayoutBytes = documentManager.View.GetCurrentLayoutStream().ToArray();
+            DefaultLayoutBytes2 = dockManager.GetCurrentLayoutStream().ToArray();
+        }
+                
         private void SwitchTabHeaderLocation()
         {
             if (tabbedView.DocumentGroupProperties.HeaderLocation == TabHeaderLocation.Left)
@@ -79,28 +78,6 @@ namespace TestColorizeSvg
             {
                 tabbedView.DocumentGroupProperties.HeaderLocation = TabHeaderLocation.Left;
                 return;
-            }
-        }
-        public MemoryStream GetCurrentLayoutStream(ISupportXtraSerializer control)
-        {
-            var stream = new MemoryStream();
-            control?.SaveLayoutToStream(stream);
-            stream.Seek(0, SeekOrigin.Begin);
-            return stream;
-        }
-
-        private void SetControlBytesLayout(ISupportXtraSerializer control, byte[]? bytes)
-        {
-            try
-            {
-                if (bytes is null || bytes.Length == 0) return;
-                var stream = new MemoryStream(bytes);
-                control?.RestoreLayoutFromStream(stream);
-                stream.Seek(0, SeekOrigin.Begin);
-            }
-            catch
-            {
-
             }
         }
     }

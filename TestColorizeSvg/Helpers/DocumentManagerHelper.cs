@@ -2,7 +2,9 @@
 using DevExpress.Utils;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
+using DevExpress.XtraRichEdit.Model;
 using DevExpress.XtraTab;
+using static DevExpress.Office.Drawing.LazyGroupBrush;
 
 namespace TestColorizeSvg
 {
@@ -16,7 +18,9 @@ namespace TestColorizeSvg
             view.DocumentProperties.AllowClose = false;
             view.DocumentProperties.AllowFloat = false;
             if (loadingText is not null)
-                view.LoadingIndicatorProperties.Description = loadingText;
+            {
+                view.LoadingIndicatorProperties.Description = loadingText;                
+            }
             else
                 view.UseLoadingIndicator = DefaultBoolean.False;
             foreach (var doc in view.Documents)
@@ -27,6 +31,25 @@ namespace TestColorizeSvg
             }
             view.DocumentGroupProperties.HeaderOrientation = TabOrientation.Horizontal;
             view.DocumentProperties.TabWidth = tableWidth;
+            view.DocumentActivated += async (s, e) =>
+            {
+                if (e.Document.Control is IDetailsModule module)
+                {
+                    if (module.Initialized) return;
+                    await module.RefreshData();
+                }
+            };
+        }
+
+        public static IDetailsModule? GetActiveModule(this TabbedView view)
+        {
+            return view.ActiveDocument?.Control as IDetailsModule;
+        }
+
+        public static async Task RefreshActiveModule(this TabbedView view)
+        {
+            var module = view.GetActiveModule();
+            if (module is not null) await module.RefreshData();
         }
 
         public static Document SetAlert(this Document doc, Color backColor = default, Color imageColor = default)
