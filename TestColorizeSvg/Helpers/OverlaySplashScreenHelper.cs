@@ -1,12 +1,28 @@
-﻿using DevExpress.XtraSplashScreen;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.Utils.Extensions;
+using DevExpress.XtraSplashScreen;
 
 namespace TestColorizeSvg
 {
     public static class OverlaySplashScreenHelper
     {
-        public static IOverlaySplashScreenHandle ShowProgressPanel(this Control control)
+        public static IOverlaySplashScreenHandle ShowProgressPanel(this Control control, string? text = null)
         {
-            var handle = SplashScreenManager.ShowOverlayForm(control);
+            IOverlaySplashScreenHandle handle;
+            if (text is not null)
+            {
+                var overlayLabel = new OverlayTextPainterEx
+                {
+                    Text = text,
+                    Color = DXSkinColors.ForeColors.DisabledText
+                };
+                handle = SplashScreenManager.ShowOverlayForm(control, 
+                    customPainter: new OverlayWindowCompositePainter(overlayLabel));
+            }
+            else
+            {
+                handle = SplashScreenManager.ShowOverlayForm(control);
+            }
             control.Tag = handle;
             return handle;
         }
@@ -14,6 +30,15 @@ namespace TestColorizeSvg
         {
             var handle = control.Tag as IOverlaySplashScreenHandle;
             if (handle is not null) SplashScreenManager.CloseOverlayForm(handle);
+        }
+    }
+
+    class OverlayTextPainterEx : OverlayTextPainter
+    {
+        protected override Rectangle CalcTextBounds(OverlayLayeredWindowObjectInfoArgs drawArgs)
+        {
+            Size textSz = CalcTextSize(drawArgs);
+            return textSz.AlignWith(drawArgs.Bounds).WithY(drawArgs.ImageBounds.Top - textSz.Height);
         }
     }
 }
