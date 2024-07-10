@@ -33,6 +33,7 @@ namespace TestColorizeSvg
                 if (e.Document.Control is IDetailsModule module)
                 {
                     if (module.Initialized) return;
+                    await module.Initialize();
                     await module.RefreshData();
                 }
             };
@@ -45,7 +46,11 @@ namespace TestColorizeSvg
             foreach (var item in view.Documents)
             {
                 var module = item.Control as IDetailsModule;
-                if (module is not null) tasks.Add(module.RefreshData());
+                if (module is not null)
+                {
+                    tasks.Add(module.Initialize());
+                    tasks.Add(module.RefreshData());
+                }
             }
             await Task.WhenAll(tasks);
         }
