@@ -6,9 +6,10 @@ namespace TestColorizeSvg
 {
     public static class OverlaySplashScreenHelper
     {
-        public static IOverlaySplashScreenHandle ShowProgressPanel(this Control control, string? text = null)
+        public static IOverlaySplashScreenHandle? ShowProgressPanel(this Control control, string? text = null)
         {
             IOverlaySplashScreenHandle handle;
+            if (control.Tag is not null) return null;
             if (text is not null)
             {
                 var overlayLabel = new OverlayTextPainterEx
@@ -30,6 +31,7 @@ namespace TestColorizeSvg
         {
             var handle = control.Tag as IOverlaySplashScreenHandle;
             if (handle is not null) SplashScreenManager.CloseOverlayForm(handle);
+            control.Tag = null;
         }
     }
 

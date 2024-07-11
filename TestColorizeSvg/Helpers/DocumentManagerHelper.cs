@@ -33,8 +33,7 @@ namespace TestColorizeSvg
                 if (e.Document.Control is IDetailsModule module)
                 {
                     if (module.Initialized) return;
-                    await module.Initialize();
-                    await module.RefreshData();
+                    await module.InitializeAndRefreshModule();
                 }
             };
         }
@@ -47,12 +46,17 @@ namespace TestColorizeSvg
             {
                 var module = item.Control as IDetailsModule;
                 if (module is not null)
-                {
-                    tasks.Add(module.Initialize());
-                    tasks.Add(module.RefreshData());
-                }
+                    tasks.Add(module.InitializeAndRefreshModule());
             }
             await Task.WhenAll(tasks);
+        }
+
+        private static async Task InitializeAndRefreshModule(this IDetailsModule module)
+        {
+            module.GetControl().ShowProgressPanel();
+            if (!module.Initialized) await module.Initialize();
+            await module.RefreshData();
+            module.GetControl().CloseProgressPanel();
         }
 
         public static Document SetAlert(this Document doc, Color backColor = default, Color imageColor = default)

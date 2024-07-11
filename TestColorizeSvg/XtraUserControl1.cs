@@ -14,6 +14,7 @@ namespace TestColorizeSvg
 {
     public partial class XtraUserControl1 : DevExpress.XtraEditors.XtraUserControl, IDetailsModule
     {
+        public Control GetControl() => this;
         public bool Initialized { get; set; }
         public XtraUserControl1()
         {
@@ -23,16 +24,13 @@ namespace TestColorizeSvg
         public async Task Initialize()
         {
             Initialized = true;
-
         }
 
         public async Task RefreshData()
         {
-            this.ShowProgressPanel();
             await Task.Delay(2500);
             var parent = FindForm();
             if (parent is not null) parent.Text = $"Updated at {DateTime.Now}";
-            this.CloseProgressPanel();
         }
     }
 }
