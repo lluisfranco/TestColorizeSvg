@@ -17,7 +17,7 @@ namespace TestColorizeSvg
             view.DocumentProperties.AllowFloat = false;
             view.EnableFreeLayoutMode = DefaultBoolean.True;
             if (loadingText is not null)
-                view.LoadingIndicatorProperties.Description = loadingText; 
+                view.LoadingIndicatorProperties.Description = loadingText;
             else
                 view.UseLoadingIndicator = DefaultBoolean.False;
             foreach (var doc in view.Documents)
